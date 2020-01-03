@@ -1,0 +1,19 @@
+﻿@using DatingWebsite.Models
+@model UserIndexViewModel
+
+<table>
+    @foreach  (var user in Model.Users)
+    {
+        <tr>
+            <td> @user.UID </td>
+            <td> @user.username </td>
+            <td> @user.password </td>
+            <td> @user.forename </td>
+            <td> @user.surname </td>
+            <td> @user.gender </td>
+            <td> @user.age </td>
+        </tr>
+    }
+</table>
+<hr />
+@Html.Partial("AddUserForm", new User())
