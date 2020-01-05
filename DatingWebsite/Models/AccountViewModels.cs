@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DatingWebsite.Models
@@ -62,23 +63,61 @@ namespace DatingWebsite.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    //REGISTER NEW USER
+    public class RegisterViewModel 
     {
+        //USERNAME, EMAIL
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        //FORNAME
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MinLength(1,ErrorMessage = "mininum 1 character required.") ]
+        //[StringLength(100, "The {0} must be at least {2} characters long.", MinimunLength = 1)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Forname")]
+        public string Forname { get; set; }
+
+        //SURNAME
+        [Required]
+        [MinLength(1, ErrorMessage = "mininum 1 character required.")]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimunLength = 1)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }        
+
+        //PASSWORD
+        [Required]
+        [StringLength(100, ErrorMessage = "mininum 6 character required.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        //CONFIRM PASSWORD
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+        //GENDER
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+        
+        //AGE
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString ="{0:yyyy-MM-dd}")]
+        public DateTime? DateOfBirth { get; set; }
+
+        ////PROFILEPICTURE
+        //[DataType(DataType.ImageUrl)]
+        //[Display(JAGVETINTE = "Profile Picture")]
+        //public string ProfilePicture { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DatingWebsite",
+    "\\DatingWebsite\\Controllers",
+    "\\DatingWebsite\\Models",
+    "\\DatingWebsite\\Views",
+    "\\DatingWebsite\\Views\\Account"
+  ],
+  "SelectedNode": "\\DatingWebsite\\Views\\Account\\Register.cshtml",
+  "PreviewInSolutionExplorer": false
+}

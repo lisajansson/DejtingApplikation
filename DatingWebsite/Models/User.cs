@@ -11,12 +11,12 @@ namespace DatingWebsite.Models
         [Key]
         public int UID { get; set; }
 
-        public string username { get; set; }
-        public string password { get; set; }
-        public string forename { get; set; }
-        public string surname { get; set; }
-        public string gender { get; set; }
-        public int age { get; set; }
+        public string Username { get; set; } //EMAIL
+        public string Forename { get; set; }
+        public string Surname { get; set; }
+        public string Password { get; set; }     
+        public string Gender { get; set; }
+        public DateTime DateOfBirth { get; set; } // mm-dd-yyyy
      // public VARBINARY(MAX) profilephoto { get; set; }
     }
 }
