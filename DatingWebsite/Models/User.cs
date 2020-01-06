@@ -9,7 +9,7 @@ namespace DatingWebsite.Models
     public class User
     {
         [Key]
-        public int UID { get; set; }
+        public string UID { get; set; }
 
         public string Username { get; set; } //EMAIL
         public string Forename { get; set; }
