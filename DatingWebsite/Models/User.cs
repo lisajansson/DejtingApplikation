@@ -8,6 +8,8 @@ namespace DatingWebsite.Models
 {
     public class User
     {
+        //internal object username;
+
         [Key]
         public string UID { get; set; }
 
@@ -16,7 +18,7 @@ namespace DatingWebsite.Models
         public string Surname { get; set; }
         public string Password { get; set; }     
         public string Gender { get; set; }
-        public DateTime DateOfBirth { get; set; } // mm-dd-yyyy
+        //public DateTime DateOfBirth { get; set; } // mm-dd-yyyy
      // public VARBINARY(MAX) profilephoto { get; set; }
     }
 }

@@ -108,11 +108,11 @@ namespace DatingWebsite.Models
         public string Gender { get; set; }
         
         //AGE
-        [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "Date of birth")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString ="{0:yyyy-MM-dd}")]
-        public DateTime? DateOfBirth { get; set; }
+        //[Required]
+        //[DataType(DataType.Date)]
+        //[Display(Name = "Date of birth")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString ="{0:yyyy-MM-dd}")]
+        //public DateTime? DateOfBirth { get; set; }
 
         ////PROFILEPICTURE
         //[DataType(DataType.ImageUrl)]

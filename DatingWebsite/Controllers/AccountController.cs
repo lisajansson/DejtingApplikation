@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DatingWebsite.Models;
 
+
 namespace DatingWebsite.Controllers
 {
     [Authorize]
@@ -153,15 +154,44 @@ namespace DatingWebsite.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var context = new UserDbContext();
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //// For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    //// Send an email with this link
+                    //// string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    var currentUser = User.Identity.GetUserId();
+
+                    //UserDbContext db = new UserDbContext();
+
+                    // User newuser = new User();
+                    // newuser.UID = currentUser;
+                    // newuser.Username = model.Email;
+                    // newuser.Forename = model.Forname;
+                    // newuser.Surname = model.Surname;
+                    // newuser.Password = model.Password;
+                    // newuser.Gender = model.Gender;
+
+                    // db.Users.Add(newuser);
+                    // db.SaveChanges();
+
+                    // return RedirectToAction("Index", "Home");
+
+                    context.Users.Add(new User
+                    {
+                        UID = user.Id,
+                        Username = model.Email,
+                        Forename = model.Forname,
+                        Surname = model.Surname,
+                        Password = model.Password,
+                        Gender = model.Gender
+                    }); 
+                    context.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
                 }
